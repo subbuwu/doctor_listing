@@ -4,6 +4,7 @@ import { Doctor, FilterState } from '@/types/doctor';
 import { fetchDoctors } from '@/services/doctorService';
 import { SearchBar } from '@/components/SearchBar';
 import { DocCard } from '@/components/DocCard';
+import { FilterBox } from './components/FilterBox';
 
 export default function App() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -114,7 +115,17 @@ export default function App() {
       </div>
       
       <div className="max-w-6xl mx-auto px-4 py-6">
-        <div className="">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Filters */}
+          <div className="md:col-span-1">
+            <div className="bg-white rounded-md shadow-sm p-4">
+              <FilterBox
+                doctors={doctors}
+                filterState={filterState}
+                onChange={handleFilterChange}
+              />
+            </div>
+          </div>
           
           
           <div className="md:col-span-3">
